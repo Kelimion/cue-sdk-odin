@@ -1,6 +1,7 @@
 package corsair_cue_example_events
 
 import "core:runtime"
+import "core:time"
 import "core:fmt"
 import cue "../../corsair-cue"
 
@@ -39,7 +40,7 @@ main :: proc() {
 
 	println("Subscibed for events. Press G6 to quit.")
 	for !QUIT {
-
+		time.sleep(1 * time.Second)
 	}
 
 	unsubscribe_from_events()
