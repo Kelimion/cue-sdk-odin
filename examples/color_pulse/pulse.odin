@@ -17,15 +17,14 @@ Color_Set_Mode :: 1
 
 main :: proc() {
 	using fmt
+	using cue
+	err:  Error
 
-	if !cue.init("../../lib/CUESDK.x64_2017.dll") {
+	if !init("../../lib/CUESDK.x64_2017.dll") {
 		println("Corsair SDK couldn't be initialized.")
 		return
 	}
-	defer cue.destroy()
-
-	using cue.sdk
-	err:  cue.Error
+	defer destroy()
 
 	protocol_details := perform_protocol_handshake()
 	if err = get_last_error(); err != .None {
@@ -40,14 +39,14 @@ main :: proc() {
 	printf("Server protocol version: %v\n", protocol_details.server_protocol_version)
 	printf("Breaking changes:        %v\n", protocol_details.breaking_changes)
 
-	positions := cue.get_led_positions()[:6]
+	positions := get_led_positions()[:6]
 
-	colors := make([]cue.Led_Color, len(positions))
+	colors := make([]Led_Color, len(positions))
 	for p, i in positions {
 		colors[i].led_id = p.led_id
 	}
 
-	cue.get_leds_colors_by_device_index(0, colors)
+	get_leds_colors_by_device_index(0, colors)
 	println("Current colors:", colors)
 
 	// request_control(.Exclusive_Lighting_Control)
@@ -63,6 +62,8 @@ async_callback :: proc "c" (ctx: rawptr, result: b32, error: cue.Error) {
 }
 
 highlight_key :: proc(led: cue.Led_Id) {
+	using cue
+
 	for x := 0.0; x < 2; x += 0.1 {
 		val := i32((1 - math.pow(x - 1, 2)) * 255)
 
@@ -71,16 +72,16 @@ highlight_key :: proc(led: cue.Led_Id) {
 		}
 
 		when Color_Set_Mode == 1 {
-			cue.set_leds_colors(color)
+			set_leds_colors(color)
 		} else when Color_Set_Mode == 2 {
-			cue.set_leds_colors_async(color, async_callback, nil)
+			set_leds_colors_async(color, async_callback, nil)
 
 		} else when Color_Set_Mode == 3 {
-			cue.set_leds_colors_buffer_by_device_index(0, color)
-			cue.set_leds_colors_flush_buffer()
+			set_leds_colors_buffer_by_device_index(0, color)
+			set_leds_colors_flush_buffer()
 		} else {
-			cue.set_leds_colors_buffer_by_device_index(0, color)
-			cue.set_leds_colors_flush_buffer_async(async_callback, nil)
+			set_leds_colors_buffer_by_device_index(0, color)
+			set_leds_colors_flush_buffer_async(async_callback, nil)
 		}
 
 		time.sleep(30 * time.Millisecond)

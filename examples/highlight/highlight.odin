@@ -6,15 +6,14 @@ import cue "../../corsair-cue"
 
 main :: proc() {
 	using fmt
+	using cue
+	err:  Error
 
-	if !cue.init("../../lib/CUESDK.x64_2017.dll") {
+	if !init("../../lib/CUESDK.x64_2017.dll") {
 		println("Corsair SDK couldn't be initialized.")
 		return
 	}
-	defer cue.destroy()
-
-	using cue.sdk
-	err:  cue.Error
+	defer destroy()
 
 	protocol_details := perform_protocol_handshake()
 	if err = get_last_error(); err != .None {
