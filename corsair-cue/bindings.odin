@@ -99,37 +99,37 @@ init :: proc(file_path := string("")) -> (ok: bool) {
 	symbol:    rawptr
 	symbol_ok: bool
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLastError");                 !symbol_ok { return false }
-	sdk.get_last_error                    = transmute(Get_Last_Error)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLastError");                     !symbol_ok { return false }
+	sdk.get_last_error                         = transmute(Get_Last_Error)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairPerformProtocolHandshake");     !symbol_ok { return false }
-	sdk.perform_protocol_handshake        = transmute(Protocol_Handshake)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairPerformProtocolHandshake");         !symbol_ok { return false }
+	sdk.perform_protocol_handshake             = transmute(Protocol_Handshake)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetDeviceCount");               !symbol_ok { return false }
-	sdk.get_device_count                  = transmute(Get_Device_Count)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetDeviceCount");                   !symbol_ok { return false }
+	sdk.get_device_count                       = transmute(Get_Device_Count)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetDeviceInfo");                !symbol_ok { return false }
-	sdk.get_device_info                   = transmute(Get_Device_Info)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetDeviceInfo");                    !symbol_ok { return false }
+	sdk.get_device_info                        = transmute(Get_Device_Info)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetBoolPropertyValue");         !symbol_ok { return false }
-	sdk.get_bool_property_value           = transmute(Get_Bool_Property_Value)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetBoolPropertyValue");             !symbol_ok { return false }
+	sdk.get_bool_property_value                = transmute(Get_Bool_Property_Value)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetInt32PropertyValue");        !symbol_ok { return false }
-	sdk.get_i32_property_value            = transmute(Get_Int32_Property_Value)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetInt32PropertyValue");            !symbol_ok { return false }
+	sdk.get_i32_property_value                 = transmute(Get_Int32_Property_Value)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSubscribeForEvents");           !symbol_ok { return false }
-	sdk.subscribe_for_events              = transmute(Subscribe_For_Events)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSubscribeForEvents");               !symbol_ok { return false }
+	sdk.subscribe_for_events                   = transmute(Subscribe_For_Events)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairUnsubscribeFromEvents");        !symbol_ok { return false }
-	sdk.unsubscribe_from_events           = transmute(Unsubscribe_From_Events)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairUnsubscribeFromEvents");            !symbol_ok { return false }
+	sdk.unsubscribe_from_events                = transmute(Unsubscribe_From_Events)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedIdForKeyName");           !symbol_ok { return false }
-	sdk.get_led_id_for_key_name           = transmute(Get_Led_Id_For_Key_Name)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedIdForKeyName");               !symbol_ok { return false }
+	sdk.get_led_id_for_key_name                = transmute(Get_Led_Id_For_Key_Name)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSetLedsColors");                !symbol_ok { return false }
-	sdk.set_leds_colors                   = transmute(Set_Leds_Colors)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSetLedsColors");                    !symbol_ok { return false }
+	sdk.set_leds_colors                        = transmute(Set_Leds_Colors)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSetLedsColorsAsync");           !symbol_ok { return false }
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSetLedsColorsAsync");               !symbol_ok { return false }
 	sdk.set_leds_colors_async                  = transmute(Set_Leds_Colors_Async)symbol
 
 	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSetLedsColorsBufferByDeviceIndex"); !symbol_ok { return false }
@@ -141,26 +141,26 @@ init :: proc(file_path := string("")) -> (ok: bool) {
 	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSetLedsColorsFlushBufferAsync");    !symbol_ok { return false }
 	sdk.set_leds_colors_flush_buffer_async     = transmute(Set_Leds_Colors_Flush_Buffer_Async)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedsColors");                !symbol_ok { return false }
-	sdk.get_leds_colors                   = transmute(Get_Leds_Colors)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedsColors");                    !symbol_ok { return false }
+	sdk.get_leds_colors                        = transmute(Get_Leds_Colors)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedsColorsByDeviceIndex");   !symbol_ok { return false }
-	sdk.get_leds_colors_by_device_index   = transmute(Get_Leds_Colors_By_Device_Index)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedsColorsByDeviceIndex");       !symbol_ok { return false }
+	sdk.get_leds_colors_by_device_index        = transmute(Get_Leds_Colors_By_Device_Index)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairRequestControl");               !symbol_ok { return false }
-	sdk.request_control                   = transmute(Request_Control)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairRequestControl");                   !symbol_ok { return false }
+	sdk.request_control                        = transmute(Request_Control)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairReleaseControl");               !symbol_ok { return false }
-	sdk.release_control                   = transmute(Release_Control)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairReleaseControl");                   !symbol_ok { return false }
+	sdk.release_control                        = transmute(Release_Control)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSetLayerPriority");             !symbol_ok { return false }
-	sdk.set_layer_priority                = transmute(Set_Layer_Priority)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairSetLayerPriority");                 !symbol_ok { return false }
+	sdk.set_layer_priority                     = transmute(Set_Layer_Priority)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedPositionsByDeviceIndex"); !symbol_ok { return false }
-	sdk.get_led_positions_by_device_index = transmute(Get_Led_Positions_By_Device_Index)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedPositionsByDeviceIndex");     !symbol_ok { return false }
+	sdk.get_led_positions_by_device_index      = transmute(Get_Led_Positions_By_Device_Index)symbol
 
-	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedPositions");              !symbol_ok { return false }
-	sdk.get_led_positions                 = transmute(Get_Led_Positions)symbol
+	if symbol, symbol_ok = dynlib.symbol_address(sdk.handle, "CorsairGetLedPositions");                  !symbol_ok { return false }
+	sdk.get_led_positions                      = transmute(Get_Led_Positions)symbol
 
 	return true
 }
